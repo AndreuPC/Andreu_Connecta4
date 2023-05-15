@@ -38,9 +38,12 @@ public class Main {
                 System.out.println("Columna plena");
                 continue;
             }
-
-
-
+            // Verificar si hay un ganador
+            if (hayGanador(tauler, filaBuida, columna, jugador)) {
+                System.out.println("¡El Jugador " + jugador + " ha ganado!");
+                boolean fiJoc = true;
+                break;
+            }
 
             // Asignar valor a la posició
             tauler[filaBuida][columna] = jugador;
@@ -74,8 +77,20 @@ public class Main {
     public static boolean hayGanador(int[][] tablero, int fila, int columna, int jugador) {
         // Verificar en sentido vertical
         if (fila >= 3 && tablero[fila - 1][columna] == jugador && tablero[fila - 2][columna] == jugador && tablero[fila - 3][columna] == jugador) {
-
+            return true;
         }
-        return true;
+        // Verificar en sentido horizontal
+        int contador = 0;
+        for (int c = 0; c < tablero[fila].length; c++) {
+            if (tablero[fila][c] == jugador) {
+                contador++;
+                if (contador >= 4) {
+                    return true;
+                }
+            } else {
+                contador = 0;
+            }
+        }
+        return false;
     }
 }
