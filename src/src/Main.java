@@ -23,7 +23,7 @@ public class Main {
             }
 
 
-            // Buscar la primera fila vacía en la columna seleccionada
+            // Cercar la primera fila Buida a la columna seleccionada
             int filaBuida = 0;
             for (int fila = 7; fila <= 0; fila--) {
                 if (tauler[fila][columna] == 0) {
@@ -32,20 +32,16 @@ public class Main {
                 }
             }
 
-            // Asignar valor de jugador
+            // Asignar valor a la posició
             tauler[filaBuida][columna] = jugador;
 
-            // Cambiar al siguiente jugador
-            if (jugador == 1) {
-                jugador = 2;
-            } else {
-                jugador = 1;
-            }
-
-            // Mostrar tauler actualizat
+            // Mostrar tauler seguent torn
             mostrarTauler(tauler);
 
-            System.out.println("Introdueix les posicions (fila, columna) : ");
+            //Canvi de de jugador
+            jugador = jugador == 1 ? 2 : 1;
+
+            System.out.println("Introdueix la columna on vols colocar la ficha (0-6): ");
 
         }
 
