@@ -2,6 +2,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        int jugador = 1;
+
         //tauler del joc
         int[][] tablero = new int[8][7];
         Scanner scanner = new Scanner(System.in);
@@ -27,7 +30,13 @@ public class Main {
             }
 
             // Asignar valor en la posición introducida
-            tablero[filas][columnas] = 1;
+            if (jugador == 1) {
+                tablero[filas][columnas] = 1; // Jugador 1
+                jugador = 2; // Canvi al Jugador 2
+            } else {
+                tablero[filas][columnas] = 2; // Jugador 2
+                jugador = 1; // Canvi al Jugador 1
+            }
 
             // Mostrar tauler actualizat
             for (int a = 0; a < 7; a++) {
