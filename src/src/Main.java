@@ -40,6 +40,8 @@ public class Main {
             }
 
 
+
+
             // Asignar valor a la posició
             tauler[filaBuida][columna] = jugador;
 
@@ -67,4 +69,12 @@ public class Main {
         System.out.println("---------------");
 
     }
+
+    // Métode per verificar si hi ha un guanyador
+    public static boolean hayGanador(int[][] tablero, int fila, int columna, int jugador) {
+        // Verificar en sentido vertical
+        if (fila >= 3 && tablero[fila - 1][columna] == jugador && tablero[fila - 2][columna] == jugador && tablero[fila - 3][columna] == jugador) {
+            return true;
+        }
+
 }
