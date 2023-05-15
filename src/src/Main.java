@@ -2,35 +2,26 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-        int jugador = 1;
-
-        //tauler del joc
-        int[][] tauler = new int[8][7];
+        int[][] tauler = new int[6][7];
         Scanner scanner = new Scanner(System.in);
-
-        for (int columnas = 0; columnas < 7; columnas++) {
-            for (int filas = 0; filas < 8; filas++) {
-                System.out.print(tauler[filas][columnas] + " ");
-            }
-            System.out.println();
-        }
+        int jugador = 1;
 
         // Mostrar tauler
         mostrarTauler(tauler);
 
         // Introduir posicions
-        System.out.println("Introdueix les posicions (fila, columna) : ");
-        int filas, columnas;
+        System.out.println("¡Comença el juego!");
+        System.out.println("Introdueix la columna on vols colocar la teva ficha (0-6): ");
+        int columna;
         while (true) {
-            filas = scanner.nextInt();
-            columnas = scanner.nextInt();
+            columna = scanner.nextInt();
 
-            // Validar posicions
-            if (filas < 0 || filas >= 8 || columnas < 0 || columnas >= 7) {
-                System.out.println("Posició inválida. Intenta de nou amb una posició valida.");
+            // Validar columna introduida
+            if (columna < 0 || columna >= 7) {
+                System.out.println("Columna inválida");
                 continue;
             }
+
 
             // Buscar la primera fila vacía en la columna seleccionada
             int filaBuida = 0;
