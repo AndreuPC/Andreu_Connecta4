@@ -26,14 +26,14 @@ public class Main {
             // Buscar la primera fila vacía en la columna seleccionada
             int filaBuida = 0;
             for (int fila = 7; fila <= 0; fila--) {
-                if (tauler[fila][columnas] == 0) {
+                if (tauler[fila][columna] == 0) {
                     filaBuida = fila;
                     break;
                 }
             }
 
             // Asignar valor de jugador
-            tauler[filaBuida][columnas] = jugador;
+            tauler[filaBuida][columna] = jugador;
 
             // Cambiar al siguiente jugador
             if (jugador == 1) {
@@ -50,7 +50,6 @@ public class Main {
         }
 
 
-
     }
 
     // Métode per mostrar el tauler
@@ -63,4 +62,5 @@ public class Main {
         }
         System.out.println("---------------");
 
+    }
 }
