@@ -6,15 +6,18 @@ public class Main {
         int jugador = 1;
 
         //tauler del joc
-        int[][] tablero = new int[8][7];
+        int[][] tauler = new int[8][7];
         Scanner scanner = new Scanner(System.in);
 
         for (int columnas = 0; columnas < 7; columnas++) {
             for (int filas = 0; filas < 8; filas++) {
-                System.out.print(tablero[filas][columnas] + " ");
+                System.out.print(tauler[filas][columnas] + " ");
             }
             System.out.println();
         }
+
+        // Mostrar tauler
+        mostrarTauler(tauler);
 
         // Introduir posicions
         System.out.println("Introdueix les posicions (fila, columna) : ");
@@ -29,27 +32,44 @@ public class Main {
                 continue;
             }
 
-            // Asignar valor en la posición introducida
+            // Buscar la primera fila vacía en la columna seleccionada
+            int filaBuida = 0;
+            for (int fila = 7; fila <= 0; fila--) {
+                if (tauler[fila][columnas] == 0) {
+                    filaBuida = fila;
+                    break;
+                }
+            }
+
+            // Asignar valor de jugador
+            tauler[filaBuida][columnas] = jugador;
+
+            // Cambiar al siguiente jugador
             if (jugador == 1) {
-                tablero[filas][columnas] = 1; // Jugador 1
-                jugador = 2; // Canvi al Jugador 2
+                jugador = 2;
             } else {
-                tablero[filas][columnas] = 2; // Jugador 2
-                jugador = 1; // Canvi al Jugador 1
+                jugador = 1;
             }
 
             // Mostrar tauler actualizat
-            for (int a = 0; a < 7; a++) {
-                for (int b = 0; b < 8; b++) {
-                    System.out.print(tablero[b][a] + " ");
-                }
-                System.out.println();
-            }
+            mostrarTauler(tauler);
 
             System.out.println("Introdueix les posicions (fila, columna) : ");
 
         }
 
+
+
     }
+
+    // Métode per mostrar el tauler
+    public static void mostrarTauler(int[][] tauler) {
+        for (int fila = 0; fila < tauler.length; fila++) {
+            for (int columna = 0; columna < tauler[fila].length; columna++) {
+                System.out.print(tauler[fila][columna] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("---------------");
 
 }
