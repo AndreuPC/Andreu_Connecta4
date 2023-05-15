@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -10,7 +11,7 @@ public class Main {
         mostrarTauler(tauler);
 
         // Introduir posicions
-        System.out.println("¡Comença el juego!");
+        System.out.println("Comença el joc");
         System.out.println("Introdueix la columna on vols colocar la teva ficha (0-6): ");
         int columna;
         while (true) {
@@ -24,13 +25,20 @@ public class Main {
 
 
             // Cercar la primera fila Buida a la columna seleccionada
-            int filaBuida = 0;
-            for (int fila = 7; fila <= 0; fila--) {
+            int filaBuida = -1;
+            for (int fila = 5; fila >= 0; fila--) {
                 if (tauler[fila][columna] == 0) {
                     filaBuida = fila;
                     break;
                 }
             }
+
+            // Si no hi ha fila buida la columna esta plena
+            if (filaBuida == -1) {
+                System.out.println("Columna plena");
+                continue;
+            }
+
 
             // Asignar valor a la posició
             tauler[filaBuida][columna] = jugador;
