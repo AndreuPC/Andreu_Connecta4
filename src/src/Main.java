@@ -74,7 +74,8 @@ public class Main {
     public static boolean hayGanador(int[][] tablero, int fila, int columna, int jugador) {
         // Verificar en sentido vertical
         if (fila >= 3 && tablero[fila - 1][columna] == jugador && tablero[fila - 2][columna] == jugador && tablero[fila - 3][columna] == jugador) {
-            return true;
-        }
 
+        }
+        return true;
+    }
 }
