@@ -73,12 +73,13 @@ public class Main {
 
     }
 
-    // Métode per verificar si hi ha un guanyador
+    // Método para verificar si hay un ganador
     public static boolean hayGanador(int[][] tablero, int fila, int columna, int jugador) {
         // Verificar en sentido vertical
         if (fila >= 3 && tablero[fila - 1][columna] == jugador && tablero[fila - 2][columna] == jugador && tablero[fila - 3][columna] == jugador) {
             return true;
         }
+
         // Verificar en sentido horizontal
         int contador = 0;
         for (int c = 0; c < tablero[fila].length; c++) {
@@ -91,6 +92,48 @@ public class Main {
                 contador = 0;
             }
         }
+
+        // Verificar en sentido diagonal ascendente
+        contador = 0;
+        int i = 1;
+        while (fila - i >= 0 && columna - i >= 0 && tablero[fila - i][columna - i] == jugador) {
+            contador++;
+            if (contador >= 4) {
+                return true;
+            }
+            i++;
+        }
+
+        i = 1;
+        while (fila + i < tablero.length && columna + i < tablero[fila].length && tablero[fila + i][columna + i] == jugador) {
+            contador++;
+            if (contador >= 4) {
+                return true;
+            }
+            i++;
+        }
+
+        // Verificar en sentido diagonal descendente
+        contador = 0;
+        i = 1;
+        while (fila - i >= 0 && columna + i < tablero[fila].length && tablero[fila - i][columna + i] == jugador) {
+            contador++;
+            if (contador >= 4) {
+                return true;
+            }
+            i++;
+        }
+
+        i = 1;
+        while (fila + i < tablero.length && columna - i >= 0 && tablero[fila + i][columna - i] == jugador) {
+            contador++;
+            if (contador >= 4) {
+                return true;
+            }
+            i++;
+        }
+
         return false;
     }
+
 }
