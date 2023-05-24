@@ -6,6 +6,7 @@ public class Main {
         int[][] tauler = new int[6][7];
         Scanner scanner = new Scanner(System.in);
         int jugador = 1;
+        int movimientos = 0;
 
         // Mostrar tauler
         mostrarTauler(tauler);
@@ -38,6 +39,16 @@ public class Main {
                 System.out.println("Columna plena");
                 continue;
             }
+
+            // Asignar valor a la posició
+            tauler[filaBuida][columna] = jugador;
+
+            // Incrementar el contador de movimientos
+            movimientos++;
+
+            // Mostrar tauler seguent torn
+            mostrarTauler(tauler);
+
             // Verificar si hay un ganador
             if (hayGanador(tauler, filaBuida, columna, jugador)) {
                 System.out.println("¡El Jugador " + jugador + " ha ganado!");
@@ -45,19 +56,16 @@ public class Main {
                 break;
             }
 
-            // Asignar valor a la posició
-            tauler[filaBuida][columna] = jugador;
-
-            // Mostrar tauler seguent torn
-            mostrarTauler(tauler);
+            // Verificar empate
+            if (movimientos == tauler.length * tauler[0].length) {
+                System.out.println("¡Empate!");
+                break;
+            }
 
             //Canvi de de jugador
             jugador = jugador == 1 ? 2 : 1;
-
             System.out.println("Introdueix la columna on vols colocar la ficha (0-6): ");
-
         }
-
 
     }
 
