@@ -112,28 +112,10 @@ public class Main {
             i++;
         }
 
-        i = 1;
-        while (fila + i < tablero.length && columna + i < tablero[fila].length && tablero[fila + i][columna + i] == jugador) {
-            contador++;
-            if (contador >= 4) {
-                return true;
-            }
-            i++;
-        }
-
         // Verificar en sentido diagonal descendente
         contador = 0;
         i = 1;
         while (fila - i >= 0 && columna + i < tablero[fila].length && tablero[fila - i][columna + i] == jugador) {
-            contador++;
-            if (contador >= 4) {
-                return true;
-            }
-            i++;
-        }
-
-        i = 1;
-        while (fila + i < tablero.length && columna - i >= 0 && tablero[fila + i][columna - i] == jugador) {
             contador++;
             if (contador >= 4) {
                 return true;
